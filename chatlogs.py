@@ -12,8 +12,7 @@ from gensim.models import LdaModel
 # The following script extracts the most important topics from the given .tsv file.
 # please run this script in a python notebook. 
 
-# The comments with '# def' are for further fine-tuning the code to run as apython program but
-# due to the time constraints I had to execute it as a script.
+# The comments with '# def' are for further fine-tuning the code to run as apython program.
 
 
 #getting the data from a .tsv file and writing it ot a separate file for processing.
@@ -28,7 +27,7 @@ with open('/Users/salil/Downloads/dialogs/chat.txt', 'w') as outfile:
 # Converting the file into a dataframe and extratcing the text column to perform pre processing tasks like tokenization,
 # stripping blank spaces,lower casing of strings.Stopwords were used to clean the text.
 
-#def preprocess(df):
+def preprocess(df):
 df=pd.read_csv('/Users/salil/Downloads/dialogs/chat.txt', sep='\t')
 df.columns = ["TimeStamp", "From", "To", "chatlogs"]
 df['filtered_sentences'] = df['chatlogs'].str.replace(r'[!|$|@|#|%|^|*|<|>|/|\|"|=|+|_|~|`|:|,|()|\d+|{|}|\n|\t|?|,|.|[|]|\'|]','')
@@ -84,7 +83,6 @@ ldamodel.save('topic.model')
 #def find_relevant_topics():
 model = LdaModel.load('topic.model')
 
-# Solution for question 2 is descibed as follows as it couldnt be completed due to time constraints.
 # for a new .tsv file please follow the above steps till we create a doc_term_matrix and pass it to the
 # lda model created above. 
 
